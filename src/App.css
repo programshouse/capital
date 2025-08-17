@@ -43,28 +43,5 @@
   color: #888;
 }
 
-/* 🔥 DARK MODE OVERRIDES */
-@media (prefers-color-scheme: dark) {
-  #root {
-    background-color: #121212;
-    color: #f0f0f0;
-  }
 
-  .card {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
-  }
-
-  .read-the-docs {
-    color: #aaa;
-  }
-
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #00e0ffaa);
-  }
-
-  .logo.react:hover {
-    filter: drop-shadow(0 0 2em #00f6ffbb);
-  }
-}
 

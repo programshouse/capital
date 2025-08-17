@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.7",
-    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/react-splide": "github:splidejs/react-splide",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.11.0",
     "formik": "^2.4.6",
