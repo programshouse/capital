@@ -22,17 +22,17 @@ const CarouselWithThumbnails = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Text and Button */}
-      <div className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 p-4 md:p-6 rounded-md text-white  ">
-        <h1 className="text-6xl md:text-8xl font-bold uppercase mb-6 leading-tight">
-          {slides[currentIndex].title}
-        </h1>
-        <a
-          href="#"
-          className="bg-[#ce9233] hover:bg-[#bd9049] px-8 py-4 rounded-md text-xl font-semibold"
-        >
-          Explore More
-        </a>
-      </div>
+      <div className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 p-4 md:p-6 rounded-md text-white max-w-[100%] md:max-w-[60%]">
+  <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold uppercase mb-6 leading-tight">
+    {slides[currentIndex].title}
+  </h1>
+  <a
+    href="#"
+    className="bg-[#ce9233] hover:bg-[#bd9049] px-6 md:px-8 py-3 md:py-4 rounded-md text-lg md:text-xl font-semibold"
+  >
+    Explore More
+  </a>
+</div>
 
       {/* Thumbnails on the left */}
       <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
