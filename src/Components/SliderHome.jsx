@@ -22,7 +22,7 @@ const CarouselWithThumbnails = () => {
       <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Text and Button */}
-      <div className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 p-4 md:p-6 rounded-md text-white ">
+      <div className="absolute left-4 md:left-24 top-1/2 -translate-y-1/2 p-4 md:p-6 rounded-md text-white  ">
         <h1 className="text-6xl md:text-8xl font-bold uppercase mb-6 leading-tight">
           {slides[currentIndex].title}
         </h1>
