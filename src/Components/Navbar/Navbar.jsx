@@ -1,34 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaChevronDown, FaFacebookF, FaTwitter, FaLinkedinIn , FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
-
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { IoMdClose, IoMdMenu } from "react-icons/io";
 import LangToggle from "../Toggle/Toggle";
 
 const Navbar = ({ siteLang }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
-  const [topHidden, setTopHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [lang, setLang] = useState(siteLang || "EN");
 
   const pagesRef = useRef(null);
-  const mobileRef = useRef(null);
-
-  const controlTopBar = () => {
-    if (window.scrollY > lastScrollY) setTopHidden(true);
-    else setTopHidden(false);
-    setLastScrollY(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", controlTopBar);
-    return () => window.removeEventListener("scroll", controlTopBar);
-  }, [lastScrollY]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (pagesRef.current && !pagesRef.current.contains(e.target)) setPagesOpen(false);
-      if (mobileRef.current && !mobileRef.current.contains(e.target)) setIsOpen(false);
+      if (pagesRef.current && !pagesRef.current.contains(e.target)) {
+        setPagesOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -37,134 +24,132 @@ const Navbar = ({ siteLang }) => {
   const isRTL = lang === "AR";
 
   return (
-    <div className={`relative z-50 ${isRTL ? "direction-rtl" : "direction-ltr"}`}>
-      {/* Top Info Bar */}
-      <div
-        className={`w-full bg-[#ce9233] text-white transition-transform duration-300 ${
-          topHidden ? "-translate-y-full" : "translate-y-0"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div className={`${isRTL ? "direction-rtl" : "direction-ltr"}`}>
+      {/* ================= Top Info Bar (YELLOW) — normal, scrolls away ================= */}
+      <div className="bg-[#ce9233] text-white">
+        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <h2 className="font-bold text-2xl md:text-3xl">WELDORK</h2>
 
-          {/* Desktop Info */}
-<div className="hidden md:flex items-center space-x-4 text-sm">
-  <div className="flex items-center space-x-1">
-    <FaMapMarkerAlt className="text-white" />
-    <span className="text-base text-white">123 Street, New York, USA</span>
-  </div>
-  <div className="flex items-center space-x-1">
-    <FaEnvelope className="text-white" />
-    <span className="text-base text-white">info@example.com</span>
-  </div>
-  <div className="flex items-center space-x-1">
-    <FaPhoneAlt className="text-white" />
-    <span className="text-base text-white">+012 345 67890</span>
-  </div>
-</div>
+          {/* Desktop info */}
+          <div className="hidden md:flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <FaMapMarkerAlt />
+              <span className="text-base">123 Street, New York, USA</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaEnvelope />
+              <span className="text-base">info@example.com</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaPhoneAlt />
+              <span className="text-base">+012 345 67890</span>
+            </div>
+          </div>
 
-          {/* Language toggle */}
-          <div className="flex items-center">
-            <LangToggle lang={lang} setLang={setLang} className="px-4 py-2 text-lg" />
+          {/* Lang + mobile toggle */}
+          <div className="flex items-center gap-3">
+            <LangToggle lang={lang} setLang={setLang} />
+            <button
+              onClick={() => setIsOpen((v) => !v)}
+              className="md:hidden p-2 rounded bg-white"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <IoMdClose className="text-2xl text-gray-700" />
+              ) : (
+                <IoMdMenu className="text-2xl text-gray-700" />
+              )}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <nav className="bg-white shadow-md mx-auto  text-lg">
+      {/* ================= Main NAV (WHITE) — sticky at top ================= */}
+      <nav className="bg-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex flex-1 justify-between items-center">
-              <div className="flex space-x-6 items-center">
-                <Link to="/" className="text-gray-700 hover:text-black">Home</Link>
-                <Link to="/about" className="text-gray-700 hover:text-black">About</Link>
-                <Link to="/services" className="text-gray-700 hover:text-black">Services</Link>
-                    <Link to="/contact" className="text-gray-700 hover:text-black">Contact</Link>
-                <div className="relative" ref={pagesRef}>
-                  <button
-                    onClick={() => setPagesOpen(!pagesOpen)}
-                    className="text-gray-700 hover:text-black flex items-center space-x-1"
-                  >
-                    <span>Pages</span>
-                    <FaChevronDown className="text-sm" />
-                  </button>
-                  {pagesOpen && (
-                    <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
-                      <Link to="/features" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Features</Link>
-                      <Link to="/team" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Team</Link>
-                      <Link to="/testimonial" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonial</Link>
-                      <Link to="/appointment" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Appointment</Link>
-                      <Link to="/404" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">404 Page</Link>
-                    </div>
-                  )}
-                </div>
-              </div>
+          <div className="h-16 flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <Link to="/" className="text-gray-700 hover:text-[#ce9233]">Home</Link>
+              <Link to="/about" className="text-gray-700 hover:text-[#ce9233]">About</Link>
+              <Link to="/services" className="text-gray-700 hover:text-[#ce9233]">Services</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-[#ce9233]">Contact</Link>
 
-              <div className="flex items-center space-x-4">
-            
-                <Link
-                  to="/quote"
-                  className="px-4 py-2 bg-[#ce9233] text-white rounded hover:bg-yellow-700"
+              {/* Pages dropdown */}
+              <div className="relative" ref={pagesRef}>
+                <button
+                  onClick={() => setPagesOpen((v) => !v)}
+                  className="text-gray-700 hover:text-[#ce9233] flex items-center gap-1"
                 >
-                  Get A Quote
-                </Link>
+                  <span>Pages</span>
+                  <span className="text-sm">▼</span>
+                </button>
+                {pagesOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
+                    <Link to="/features" className="block px-4 py-2 hover:bg-gray-100">Features</Link>
+                    <Link to="/team" className="block px-4 py-2 hover:bg-gray-100">Our Team</Link>
+                    <Link to="/testimonial" className="block px-4 py-2 hover:bg-gray-100">Testimonial</Link>
+                    <Link to="/appointment" className="block px-4 py-2 hover:bg-gray-100">Appointment</Link>
+                    <Link to="/404" className="block px-4 py-2 hover:bg-gray-100">404 Page</Link>
+                  </div>
+                )}
               </div>
             </div>
 
-            {/* Mobile Toggle */}
-            <div className="lg:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 flex flex-col gap-1"
-              >
-                <span className="block w-6 h-[2px] bg-gray-700"></span>
-                <span className="block w-6 h-[2px] bg-gray-700"></span>
-                <span className="block w-6 h-[2px] bg-gray-700"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div ref={mobileRef} className="lg:hidden bg-white border-t border-gray-200">
-            <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</Link>
-            <Link to="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</Link>
-            <Link to="/services" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Services</Link>
-                <Link to="/contact" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</Link>
-            <button
-              onClick={() => setPagesOpen(!pagesOpen)}
-              className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 flex items-center justify-between"
-            >
-              Pages <FaChevronDown className="text-sm" />
-            </button>
-            {pagesOpen && (
-              <div className="pl-4">
-                <Link to="/features" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Features</Link>
-                <Link to="/team" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Our Team</Link>
-                <Link to="/testimonial" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Testimonial</Link>
-                <Link to="/appointment" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Appointment</Link>
-                <Link to="/404" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">404 Page</Link>
-
-              </div>
-            )}
-
-          
             <Link
               to="/quote"
-              className="block px-4 py-2 bg-[#ce9233] text-white rounded mx-4 my-2 text-center hover:bg-yellow-700"
+              className="px-4 py-2 bg-[#ce9233] text-white rounded hover:bg-yellow-700"
             >
               Get A Quote
             </Link>
           </div>
-        )}
+        </div>
       </nav>
+
+      {/* ================= Mobile dropdown (WHITE, below sticky nav) ================= */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 sticky top-16 z-40">
+          <Link to="/" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Home</Link>
+          <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">About</Link>
+          <Link to="/services" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Services</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Contact</Link>
+
+          <button
+            onClick={() => setPagesOpen((v) => !v)}
+            className="w-full text-left px-4 py-3 hover:bg-gray-100 flex items-center justify-between"
+          >
+            Pages <span className="text-sm">▼</span>
+          </button>
+          {pagesOpen && (
+            <div className="pb-2">
+              <Link to="/features" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Features</Link>
+              <Link to="/team" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Our Team</Link>
+              <Link to="/testimonial" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Testimonial</Link>
+              <Link to="/appointment" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Appointment</Link>
+              <Link to="/404" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">404 Page</Link>
+            </div>
+          )}
+
+          <Link
+            to="/quote"
+            onClick={() => setIsOpen(false)}
+            className="block mx-4 my-3 text-center px-4 py-2 bg-[#ce9233] text-white rounded hover:bg-yellow-700"
+          >
+            Get A Quote
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
 
 
 
