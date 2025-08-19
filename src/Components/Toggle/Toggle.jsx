@@ -1,30 +1,55 @@
-// LangToggle.jsx
-import React from "react";
+import React, { useState } from "react";
 
-const LangToggle = ({ lang, setLang }) => {
-  const toggle = () => setLang(lang === "EN" ? "AR" : "EN");
+const Switcher7 = () => {
+  const [isArabic, setIsArabic] = useState(false);
+
+  const toggleLanguage = () => {
+    setIsArabic((prev) => !prev);
+  };
 
   return (
-    <div
-      onClick={toggle}
-      className="relative cursor-pointer w-16 h-8 flex items-center bg-white rounded-full p-1   shadow-inner transition-colors duration-300"
-    >
-      {/* الدائرة المتحركة */}
-      <div
-        className={`w-6 h-6 bg-[#ce9233] rounded-full shadow-md transform transition-transform duration-300 ${
-          lang === "EN" ? "translate-x-0" : "translate-x-9"
+    <div className="flex items-center gap-2">
+      {/* Arabic Label */}
+      <span
+        className={`text-sm font-bold transition-colors ${
+          isArabic ? "text-white" : "text-gray-500"
         }`}
-      ></div>
+      >
+        AR
+      </span>
 
-      {/* النصوص EN / AR */}
-      <div className="absolute w-full flex justify-between px-1 text-sm font-bold text-[#ce9233]">
-        <span>EN</span>
-        <span>AR</span>
-      </div>
+      {/* Toggle Switch */}
+      <label className="relative inline-flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          className="sr-only"
+          checked={!isArabic}
+          onChange={toggleLanguage}
+        />
+        <div className="w-14 h-8 rounded-full border-2 border-white relative">
+          <div
+            className={`absolute top-0.5 h-6 w-6 rounded-full bg-white transition-all duration-300 ${
+              isArabic ? "right-7" : "right-1"
+            }`}
+          />
+        </div>
+      </label>
+
+      {/* English Label */}
+      <span
+        className={`text-sm font-bold transition-colors ${
+          !isArabic ? "text-white" : "text-gray-500"
+        }`}
+      >
+        EN
+      </span>
     </div>
   );
 };
 
-export default LangToggle;
+export default Switcher7;
+
+
+
 
 

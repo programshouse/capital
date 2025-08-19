@@ -65,7 +65,7 @@ const ReviewSlider = () => {
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto py-16 mb-24 px-4 md:px-8">
+    <div className="relative w-full max-w-7xl mx-auto py-20  mb-28 px-4 md:px-8">
       {/* Slider Container */}
       <div className="flex items-center justify-center relative">
         {reviews.map((review, index) => {
