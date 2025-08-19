@@ -25,12 +25,12 @@ const Navbar = ({ siteLang }) => {
 
   return (
     <div className={`${isRTL ? "direction-rtl" : "direction-ltr"}`}>
-      {/* ================= Top Info Bar (YELLOW) — normal, scrolls away ================= */}
+      {/* ================= Top Info Bar (YELLOW) ================= */}
       <div className="bg-[#ce9233] text-white">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <h2 className="font-bold text-2xl md:text-3xl">WELDORK</h2>
 
-          {/* Desktop info */}
+          {/* Desktop info + Lang toggle */}
           <div className="hidden md:flex items-center gap-4 text-sm">
             <div className="flex items-center gap-2">
               <FaMapMarkerAlt />
@@ -44,14 +44,18 @@ const Navbar = ({ siteLang }) => {
               <FaPhoneAlt />
               <span className="text-base">+012 345 67890</span>
             </div>
+
+            {/* Language toggle — desktop */}
+            <div className="ml-4">
+              <LangToggle lang={lang} setLang={setLang} />
+            </div>
           </div>
 
-          {/* Lang + mobile toggle */}
-          <div className="flex items-center gap-3">
-            <LangToggle lang={lang} setLang={setLang} />
+          {/* Mobile menu toggle ONLY */}
+          <div className="flex items-center gap-3 md:hidden">
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="md:hidden p-2 rounded bg-white"
+              className="p-2 rounded bg-white"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -64,8 +68,8 @@ const Navbar = ({ siteLang }) => {
         </div>
       </div>
 
-      {/* ================= Main NAV (WHITE) — sticky at top ================= */}
-      <nav className="bg-white shadow-md sticky top-0 z-50">
+      {/* ================= Main NAV (WHITE) — desktop only ================= */}
+      <nav className="bg-white shadow-md sticky top-0 z-50 hidden md:block">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-16 flex items-center justify-between">
             <div className="flex items-center gap-6">
@@ -74,7 +78,7 @@ const Navbar = ({ siteLang }) => {
               <Link to="/services" className="text-gray-700 hover:text-[#ce9233]">Services</Link>
               <Link to="/contact" className="text-gray-700 hover:text-[#ce9233]">Contact</Link>
 
-              {/* Pages dropdown */}
+              {/* Pages dropdown desktop */}
               <div className="relative" ref={pagesRef}>
                 <button
                   onClick={() => setPagesOpen((v) => !v)}
@@ -105,9 +109,9 @@ const Navbar = ({ siteLang }) => {
         </div>
       </nav>
 
-      {/* ================= Mobile dropdown (WHITE, below sticky nav) ================= */}
+      {/* ================= Mobile menu ================= */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 sticky top-16 z-40">
+        <div className="md:hidden bg-white border-t border-gray-200">
           <Link to="/" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Home</Link>
           <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">About</Link>
           <Link to="/services" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Services</Link>
@@ -129,6 +133,11 @@ const Navbar = ({ siteLang }) => {
             </div>
           )}
 
+
+          <div className="px-4 py-3 border-t text-[#ce9233] border-gray-200">
+            <LangToggle lang={lang} setLang={setLang} />
+          </div>
+
           <Link
             to="/quote"
             onClick={() => setIsOpen(false)}
@@ -143,6 +152,11 @@ const Navbar = ({ siteLang }) => {
 };
 
 export default Navbar;
+
+
+
+
+
 
 
 

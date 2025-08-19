@@ -12,7 +12,7 @@ const Switcher7 = () => {
       {/* Arabic Label */}
       <span
         className={`text-sm font-bold transition-colors ${
-          isArabic ? "text-white" : "text-gray-500"
+          isArabic ?  "text-[#ce9233] md:text-white" : "text-gray-500"
         }`}
       >
         AR
@@ -26,9 +26,9 @@ const Switcher7 = () => {
           checked={!isArabic}
           onChange={toggleLanguage}
         />
-        <div className="w-14 h-8 rounded-full border-2 border-white relative">
+        <div className="w-14 h-8 rounded-full border-2 border-[#ce9233] md:border-white relative">
           <div
-            className={`absolute top-0.5 h-6 w-6 rounded-full bg-white transition-all duration-300 ${
+            className={`absolute top-0.5 h-6 w-6 rounded-full bg-[#ce9233]  md:bg-white transition-all duration-300 ${
               isArabic ? "right-7" : "right-1"
             }`}
           />
@@ -38,7 +38,7 @@ const Switcher7 = () => {
       {/* English Label */}
       <span
         className={`text-sm font-bold transition-colors ${
-          !isArabic ? "text-white" : "text-gray-500"
+          !isArabic ? "text-[#ce9233] md:text-white" : "text-gray-500"
         }`}
       >
         EN
