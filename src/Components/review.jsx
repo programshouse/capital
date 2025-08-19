@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const reviews = [
@@ -42,6 +42,15 @@ const reviews = [
 
 const ReviewSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const prevSlide = () => {
     setCurrentIndex((prev) =>
@@ -61,20 +70,29 @@ const ReviewSlider = () => {
       <div className="flex items-center justify-center relative">
         {reviews.map((review, index) => {
           let position = "hidden";
+
           if (index === currentIndex) {
             position = "opacity-100 scale-100 blur-0 z-20";
           } else if (
-            index === (currentIndex - 1 + reviews.length) % reviews.length ||
-            index === (currentIndex + 1) % reviews.length
+            !isMobile &&
+            (
+              index === (currentIndex - 1 + reviews.length) % reviews.length ||
+              index === (currentIndex + 1) % reviews.length
+            )
           ) {
             position = "opacity-70 scale-90 blur-[2px] z-10";
+          }
+
+          // Mobile: hide all except current
+          if (isMobile && index !== currentIndex) {
+            position = "hidden";
           }
 
           return (
             <div
               key={review.id}
-              className={`absolute transition-all duration-500 ease-in-out bg-white shadow-2xl rounded-2xl mb-20 p-8 mx-4 text-center ${position}
- w-full sm:w-[18rem] md:w-[26rem] lg:w-[34rem]`}
+              className={`absolute transition-all duration-500 ease-in-out bg-white shadow-2xl rounded-2xl mb-24 p-8 mx-4 text-center ${position}
+                w-[22rem] sm:w-[18rem] md:w-[24rem] lg:w-[30rem]`}
               style={{
                 left:
                   index === (currentIndex - 1 + reviews.length) % reviews.length
@@ -111,7 +129,9 @@ const ReviewSlider = () => {
               </div>
 
               {/* Description */}
-              <p className="text-gray-700 italic text-lg">{review.description}</p>
+              <p className="text-gray-700 italic text-lg">
+                {review.description}
+              </p>
             </div>
           );
         })}
@@ -120,13 +140,17 @@ const ReviewSlider = () => {
       {/* Navigation */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full hover:bg-gray-600 transition"
+        className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 
+                   bg-gray-800 text-white p-3 sm:p-4 rounded-full 
+                   hover:bg-gray-600 transition"
       >
         <FaChevronLeft />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full hover:bg-gray-600 transition"
+        className="absolute right-2 sm:right-6 lg:right-[-4rem] top-1/2 -translate-y-1/2 
+                   bg-gray-800 text-white p-3 sm:p-4 rounded-full 
+                   hover:bg-gray-600 transition"
       >
         <FaChevronRight />
       </button>

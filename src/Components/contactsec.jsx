@@ -1,0 +1,86 @@
+import React from "react";
+import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
+
+const ContactSection = () => {
+  return (
+    <section
+      className="w-full bg-cover bg-center"
+      style={{ backgroundImage: "url('assets/carousel-2.jpg')" }}
+    >
+      <div className="bg-black/50">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start p-8 md:p-16 gap-8">
+     {/* Left Content */}
+<div className="md:w-1/2 flex items-center justify-center text-white ">
+  <div className="pt-24 px-8"> 
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      We Complete Welding & Metal Projects in Time
+    </h2>
+    <p className="mb-6">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+      tellus augue, iaculis id elit eget, ultrices pulvinar tortor.
+    </p>
+    <div className="space-y-4">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="bg-white p-3 rounded-full flex items-center justify-center">
+          <FaMapMarkerAlt className="text-black text-2xl" />
+        </div>
+        <div>
+          <h3 className="font-semibold text-lg">Office Address</h3>
+          <p>123 Street, New York, USA</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-4 mb-4">
+        <div className="bg-white p-3 rounded-full flex items-center justify-center">
+          <FaClock className="text-black text-2xl" />
+        </div>
+        <div>
+          <h3 className="font-semibold text-lg">Office Time</h3>
+          <p>Mon-Sat 09am-5pm, Sun Closed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+          {/* Right Form */}
+<div className="w-full md:w-1/2 bg-white rounded-lg p-6 md:p-10 shadow-lg">
+  <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
+  <form className="flex flex-col gap-4">
+    <input
+      type="text"
+      placeholder="Your Name"
+      className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    />
+    <input
+      type="email"
+      placeholder="Your Email"
+      className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    />
+    <input
+      type="text"
+      placeholder="Subject"
+      className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    />
+    <textarea
+      rows="5"
+      placeholder="Message"
+      className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+    ></textarea>
+    <button
+      type="submit"
+      className="bg-yellow-600 text-white font-semibold py-3 rounded hover:bg-yellow-700 transition-colors"
+    >
+      Send Message
+    </button>
+  </form>
+</div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
