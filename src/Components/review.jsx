@@ -65,7 +65,8 @@ const ReviewSlider = () => {
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto py-20  mb-28 px-4 md:px-8">
+ <div className="relative w-full max-w-7xl mx-auto py-4 md:py-16 mb-6 md:mb-28 px-4 md:px-8">
+
       {/* Slider Container */}
       <div className="flex items-center justify-center relative">
         {reviews.map((review, index) => {
@@ -91,17 +92,25 @@ const ReviewSlider = () => {
           return (
             <div
               key={review.id}
-              className={`absolute transition-all duration-500 ease-in-out bg-white shadow-2xl rounded-2xl mb-24 p-8 mx-4 text-center ${position}
+              className={`${
+                isMobile
+                  ? "relative mx-auto py-1 mb-0" 
+                  : "absolute py-2"
+              } transition-all duration-500 ease-in-out bg-white shadow-2xl rounded-2xl mb-24 px-8 text-center ${position}
                 w-[22rem] sm:w-[18rem] md:w-[24rem] lg:w-[30rem]`}
-              style={{
-                left:
-                  index === (currentIndex - 1 + reviews.length) % reviews.length
-                    ? "20%"
-                    : index === (currentIndex + 1) % reviews.length
-                    ? "80%"
-                    : "50%",
-                transform: `translateX(-50%)`,
-              }}
+              style={
+                isMobile
+                  ? {} // no left/translate logic for mobile
+                  : {
+                      left:
+                        index === (currentIndex - 1 + reviews.length) % reviews.length
+                          ? "20%"
+                          : index === (currentIndex + 1) % reviews.length
+                          ? "80%"
+                          : "50%",
+                      transform: `translateX(-50%)`,
+                    }
+              }
             >
               {/* Image */}
               <img
@@ -140,17 +149,21 @@ const ReviewSlider = () => {
       {/* Navigation */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 
-                   bg-gray-800 text-white p-3 sm:p-4 rounded-full 
-                   hover:bg-gray-600 transition"
+        className={`absolute bg-gray-800 text-white p-3 sm:p-4 rounded-full hover:bg-gray-600 transition ${
+          isMobile
+            ? "bottom-4 left-1/3 top-auto -translate-y-0" 
+            : "left-2 sm:left-5 top-1/2 -translate-y-1/2"
+        }`}
       >
         <FaChevronLeft />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-6 lg:right-[-4rem] top-1/2 -translate-y-1/2 
-                   bg-gray-800 text-white p-3 sm:p-4 rounded-full 
-                   hover:bg-gray-600 transition"
+        className={`absolute bg-gray-800 text-white p-3 sm:p-4 rounded-full hover:bg-gray-600 transition ${
+          isMobile
+            ? "bottom-4 right-1/3 top-auto -translate-y-0" 
+            : "right-2 sm:right-6 lg:right-[-4rem] top-1/2 -translate-y-1/2"
+        }`}
       >
         <FaChevronRight />
       </button>
@@ -159,5 +172,6 @@ const ReviewSlider = () => {
 };
 
 export default ReviewSlider;
+
 
 

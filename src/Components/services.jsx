@@ -54,7 +54,8 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <section className="py-20 bg-white mb-20">
+<section className="py-3 md:py-20 mb-1 md:mb-20 bg-white">
+
       <div className="container mx-auto px-4 py-10 ">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight">
