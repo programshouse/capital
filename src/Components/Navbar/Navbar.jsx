@@ -28,7 +28,7 @@ const Navbar = ({ siteLang }) => {
       {/* ================= Top Info Bar (YELLOW) ================= */}
       <div className="bg-[#ce9233] text-white">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <h2 className="font-bold text-2xl md:text-3xl">WELDORK</h2>
+          <h2 className="font-bold text-2xl md:text-3xl">CAPITAL</h2>
 
           {/* Desktop info + Lang toggle */}
           <div className="hidden md:flex items-center gap-4 text-sm">
@@ -76,6 +76,7 @@ const Navbar = ({ siteLang }) => {
               <Link to="/" className="text-gray-700 hover:text-[#ce9233]">Home</Link>
               <Link to="/about" className="text-gray-700 hover:text-[#ce9233]">About</Link>
               <Link to="/services" className="text-gray-700 hover:text-[#ce9233]">Services</Link>
+                        <Link to="/portfolio" className="text-gray-700 hover:text-[#ce9233]">portfolio</Link>
               <Link to="/contact" className="text-gray-700 hover:text-[#ce9233]">Contact</Link>
 
               {/* Pages dropdown desktop */}
@@ -115,6 +116,7 @@ const Navbar = ({ siteLang }) => {
           <Link to="/" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Home</Link>
           <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">About</Link>
           <Link to="/services" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Services</Link>
+          <Link to="/portfolio" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">portfolio</Link>
           <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Contact</Link>
 
           <button

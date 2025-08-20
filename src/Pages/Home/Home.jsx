@@ -6,6 +6,7 @@ import WhyChoose from '../../Components/whychoose';
 import Services from '../../Components/services';
 import Review from '../../Components/review';
 import Contact from   '../../Components/contactsec';
+
 export const Home = () => {
   return (
     <div>

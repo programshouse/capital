@@ -6,9 +6,9 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* ✅ Hero Section */}
-      <section className="bg-[url('/assets/carousel-2.jpg')] bg-cover bg-center py-16 text-center text-white relative">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10">
+      <section className= " relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center"      style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+        <div className="relative z-10 text-white">
           <h1 className="text-4xl md:text-5xl font-bold">Contact Us</h1>
           <p className="mt-3 text-lg max-w-2xl mx-auto">
             We'd love to hear from you! Reach out to us anytime and we'll happily
@@ -26,7 +26,7 @@ export default function Contact() {
             {/* Phone */}
             <div className="flex items-center gap-4">
               <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                <FaPhoneAlt className="text-white text-xl" />
+                <FaPhoneAlt className="text-yellow-600 text-xl" />
               </div>
               <div>
                 <h3 className="font-semibold">Phone</h3>
@@ -36,7 +36,7 @@ export default function Contact() {
             {/* Email */}
             <div className="flex items-center gap-4">
               <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                <FaEnvelope className="text-white text-xl" />
+                <FaEnvelope className="text-yellow-600 text-xl" />
               </div>
               <div>
                 <h3 className="font-semibold">Email</h3>
@@ -46,7 +46,7 @@ export default function Contact() {
             {/* Address */}
             <div className="flex items-center gap-4">
               <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                <FaMapMarkerAlt className="text-white text-xl" />
+                <FaMapMarkerAlt className=" text-yellow-600 text-xl" />
               </div>
               <div>
                 <h3 className="font-semibold">Office Address</h3>
@@ -56,7 +56,7 @@ export default function Contact() {
             {/* Working Hours */}
             <div className="flex items-center gap-4">
               <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                <MdAccessTime className="text-white text-xl" />
+                <MdAccessTime className=" text-yellow-600 text-xl" />
               </div>
               <div>
                 <h3 className="font-semibold">Working Hours</h3>
@@ -102,66 +102,55 @@ export default function Contact() {
       </section>
 
       {/* ✅ Map + Office Info */}
-      <section className="relative bg-gray-900 text-white py-16">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-[url('/assets/office-bg.jpg')] bg-cover bg-center"
-        ></div>
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-        <div className="relative container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-          {/* Map */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              title="Google Map"
-              className="w-full h-80"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.999730105682!2d-73.99108338459617!3d40.730610079329454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDQzJzUwLjIiTiA3M8KwNTknMzMuNyJX!5e0!3m2!1sen!2sus!4v1623754012386!5m2!1sen!2sus"
-              allowFullScreen=""
-              loading="lazy"
-            ></iframe>
-          </div>
+      <section className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center"
+         style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}>
+  
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
 
-          {/* Office Info */}
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4">Our Office</h2>
-            <p className="text-gray-200 leading-relaxed mb-6">
-              Visit our office for inquiries or assistance. We're here to help you
-              with any questions you may have about our services.
-            </p>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-3">
-                <span className="bg-yellow-500 p-2 rounded-full">
-                  <FaMapMarkerAlt className="text-white text-lg" />
-                </span>
-                123 Business Street, NY
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="bg-yellow-500 p-2 rounded-full">
-                  <FaPhoneAlt className="text-white text-lg" />
-                </span>
-                +1 234 567 890
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="bg-yellow-500 p-2 rounded-full">
-                  <FaEnvelope className="text-white text-lg" />
-                </span>
-                support@example.com
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+  <div className="relative container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+    
+    {/* Map */}
+    <div className="rounded-2xl overflow-hidden shadow-lg">
+      <iframe
+        title="Google Map"
+        className="w-full h-100"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.048042329076!2d31.235711!3d30.044420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840c9b8e49f6d%3A0x123456789abcdef!2sCairo!5e0!3m2!1sen!2seg!4v1672485000000!5m2!1sen!2seg"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    {/* Office Info */}
+    <div className="relative z-10">
+      <h2 className="text-3xl  text-white font-bold mb-4">Our Office</h2>
+      <p className="text-gray-100 leading-relaxed mb-6">
+        Visit our office for inquiries or assistance. We're here to help you
+        with any questions you may have about our services.
+      </p>
+      <ul className="space-y-4">
+        <li className="flex items-center gap-3 text-white">
+          <span className="bg-yellow-500 p-2 rounded-full">
+            <FaMapMarkerAlt className="text-white text-lg" />
+          </span>
+          123 Business Street, NY
+        </li>
+        <li className="flex items-center gap-3 text-white">
+          <span className="bg-yellow-500 p-2 rounded-full">
+            <FaPhoneAlt className="text-white text-lg" />
+          </span>
+          +1 234 567 890
+        </li>
+        <li className="flex items-center gap-3 text-white">
+          <span className="bg-yellow-500 p-2 rounded-full">
+            <FaEnvelope className="text-white text-lg" />
+          </span>
+          support@example.com
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-

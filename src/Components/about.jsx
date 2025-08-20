@@ -29,9 +29,10 @@ const AboutSection = () => {
           {/* Content */}
           <div className="lg:w-1/2 flex flex-col space-y-8 lg:pl-8 px-5">
             {/* Title */}
-            <h1 className="text-2xl md:text-4xl lg:text-5xl text-black font-bold uppercase leading-snug">
-              Ultimate Welding and Quality Metal Solutions
-            </h1>
+  <h2 className="text-lg sm:text-xl md:text-4xl text-black font-bold uppercase leading-snug">
+  Ultimate Welding and Quality Metal Solutions
+</h2>
+
 
             {/* Paragraph */}
             <p className="text-gray-700 leading-relaxed">
