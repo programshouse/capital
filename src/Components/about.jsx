@@ -8,23 +8,26 @@ const AboutSection = () => {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16">
           {/* Image with frame */}
 <div className="lg:w-1/2 relative flex items-center justify-center lg:pr-8">
-  {/* border frame */}
+  {/* Border frame */}
   <div
     className="
       absolute -top-3 -left-3 w-[90%] h-[90%] border-2 md:border-4 border-yellow-600
-      lg:top-6 lg:left-6 lg:w-[95%] lg:h-[95%]
+      lg:top-[-6] lg:left-4 lg:w-[80%] lg:h-[100%] 
     "
   ></div>
+<img
+  src="assets/about.jpg"
+  alt="about"
+  className="
+    relative w-full max-w-xs sm:max-w-sm md:max-w-md
+    lg:max-w-[600px] lg:h-[550px]  
+    object-cover z-10 shadow-md
+  "
+/>
 
-  <img
-    src="assets/about.jpg"
-    alt="about"
-    className="
-      relative w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-3xl
-      object-cover z-10 shadow-md
-    "
-  />
 </div>
+
+
 
           {/* Content */}
           <div className="lg:w-1/2 flex flex-col space-y-8 lg:pl-8 px-5">
@@ -43,29 +46,31 @@ const AboutSection = () => {
             </p>
 
             {/* Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              <div className="flex items-center">
-                <div className="flex-shrink-0 w-16 h-16 bg-yellow-100 flex items-center justify-center mr-5 rounded-lg shadow-sm">
-                  <FaUsersCog className="text-yellow-600 w-8 h-8" />
-                </div>
-                <h5 className="uppercase font-semibold text-gray-800">
-                  Certified Expert & Team
-                </h5>
-              </div>
-              <div className="flex items-center">
-                <div className="flex-shrink-0 w-16 h-16 bg-yellow-100 flex items-center justify-center mr-5 rounded-lg shadow-sm">
-                  <FaTachometerAlt className="text-yellow-600 w-8 h-8" />
-                </div>
-                <h5 className="uppercase font-semibold text-gray-800">
-                  Fast & Reliable Services
-                </h5>
-              </div>
-            </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  <div className="flex items-center">
+    <div className="group flex-shrink-0 w-16 h-16 bg-yellow-100 hover:bg-yellow-600 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300">
+      <FaUsersCog className="text-yellow-600 w-8 h-8 group-hover:text-yellow-100 transition duration-300" />
+    </div>
+    <h5 className="uppercase font-semibold text-gray-800">
+      Certified Expert & Team
+    </h5>
+  </div>
+
+  <div className="flex items-center">
+    <div className="group flex-shrink-0 w-16 h-16 bg-yellow-100 hover:bg-yellow-600 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300">
+      <FaTachometerAlt className="text-yellow-600 w-8 h-8 group-hover:text-yellow-100 transition duration-300" />
+    </div>
+    <h5 className="uppercase font-semibold text-gray-800">
+      Fast & Reliable Services
+    </h5>
+  </div>
+</div>
+
 
             {/* List */}
             <ul className="space-y-4 text-gray-600">
               <li className="flex items-center">
-                <FaCheckSquare className="text-yellow-600 mr-3 w-5 h-5" />
+                <FaCheckSquare className="text-yellow-600 00 mr-3 w-5 h-5" />
                 Many variations of passages of lorem ipsum
               </li>
               <li className="flex items-center">

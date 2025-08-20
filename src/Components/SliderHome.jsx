@@ -34,7 +34,7 @@ const CarouselWithThumbnails = () => {
 
       {/* Text and Button */}
       <div
-        className="absolute left-6 sm:left-12 md:left-32 top-1/2 -translate-y-1/2 
+        className="absolute left-6 sm:left-12  md:left-32 top-1/2 -translate-y-1/2 
                    p-3 sm:p-4 md:p-6 pl-6 sm:pl-12 md:pl-20 rounded-md text-white 
                    w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%]"
       >
