@@ -28,7 +28,7 @@ export default function Contact() {
           <div className="space-y-5 sm:space-y-6">
             {/* Phone */}
             <div className="flex items-start gap-4">
-              <div className="bg-white/20 p-3 rounded-full shrink-0">
+              <div className=" bg-white p-3 rounded-full shrink-0">
                 <FaPhoneAlt className="text-yellow-700 sm:text-xl" />
               </div>
               <div>
@@ -38,8 +38,8 @@ export default function Contact() {
             </div>
             {/* Email */}
             <div className="flex items-start gap-4">
-              <div className="bg-white/20 p-3 rounded-full shrink-0">
-                <FaEnvelope className="text-yellow-700 sm:text-xl" />
+              <div className="p-3  bg-white rounded-full shrink-0">
+                <FaEnvelope className="text-yellow-700  sm:text-xl" />
               </div>
               <div>
                 <h3 className="font-semibold">Email</h3>
@@ -48,7 +48,7 @@ export default function Contact() {
             </div>
             {/* Address */}
             <div className="flex items-start gap-4">
-              <div className="bg-white/20 p-3 rounded-full shrink-0">
+              <div className="bg-white p-3 rounded-full shrink-0">
                 <FaMapMarkerAlt className="text-yellow-700 sm:text-xl" />
               </div>
               <div>
@@ -58,7 +58,7 @@ export default function Contact() {
             </div>
             {/* Hours */}
             <div className="flex items-start gap-4">
-              <div className="bg-white/20 p-3 rounded-full shrink-0">
+              <div className="bg-white p-3 rounded-full shrink-0">
                 <MdAccessTime className="text-yellow-700 sm:text-xl" />
               </div>
               <div>
@@ -124,7 +124,7 @@ export default function Contact() {
           </div>
 
           {/* Office Info */}
-          <div className="relative z-10">
+          <div className="relative z-10 pt-10">
             <h2 className="text-2xl sm:text-3xl text-white font-bold mb-4">Our Office</h2>
             <p className="text-gray-100 leading-relaxed mb-6 text-sm sm:text-base">
               Visit our office for inquiries or assistance. We&apos;re here to help you with

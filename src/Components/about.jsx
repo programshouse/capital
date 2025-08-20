@@ -85,7 +85,7 @@ const AboutSection = () => {
 
             {/* Highlighted Box */}
             <div className="border-4 border-yellow-600 text-lg md:text-xl font-bold p-6 text-center rounded-md shadow-md">
-              <h4 className="uppercase font-semibold">
+              <h4 className="uppercase font-semibold text-black">
                 We’re Good in All Metal Works Using Quality Welding Tools
               </h4>
             </div>
