@@ -43,7 +43,7 @@ const FeatureCard = ({ title, description, icon: Icon }) => {
         <Icon size={22} className="sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
       </div>
 
-      <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold uppercase tracking-tight mb-3">
+      <h3 className="text-lg sm:text-xl lg:text-2xl text-black font-extrabold uppercase tracking-tight mb-3">
         {title}
       </h3>
       <p className="text-gray-600 text-sm sm:text-base">{description}</p>
