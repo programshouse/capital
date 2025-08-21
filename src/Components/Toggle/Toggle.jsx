@@ -12,7 +12,7 @@ const Switcher7 = () => {
       {/* Arabic Label */}
       <span
         className={`text-sm font-bold transition-colors ${
-          isArabic ?  "text-[#ce9233] md:text-white" : "text-gray-500"
+          isArabic ?  "text-[#ce9233] md:text-white" : "text-white"
         }`}
       >
         AR
@@ -38,7 +38,7 @@ const Switcher7 = () => {
       {/* English Label */}
       <span
         className={`text-sm font-bold transition-colors ${
-          !isArabic ? "text-[#ce9233] md:text-white" : "text-gray-500"
+          !isArabic ? "text-[#ce9233] md:text-white" : "text-white"
         }`}
       >
         EN

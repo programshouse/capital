@@ -31,27 +31,32 @@ const FEATURES = [
 
 const FeatureCard = ({ title, description, icon: Icon }) => {
   return (
-<div className="relative bg-white rounded-md shadow-sm p-12 pt-12 mb-6 md:mb-4 group">
-
+    <div className="relative bg-white rounded-md shadow-sm p-6 sm:p-8 lg:p-12 mb-6 md:mb-4 group">
       {/* Top SVG icon */}
-      <div className="absolute -top-6 left-8 w-16 h-16 bg-[#c99238] text-white grid place-items-center transition-transform duration-300 group-hover:translate-x-5">
-        <Icon size={28} />
+      <div
+        className="absolute -top-6 left-6 sm:left-8 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 
+                   bg-[#c99238] text-white grid place-items-center rounded-md 
+                   transition-transform duration-300 
+                   group-hover:translate-x-3 sm:group-hover:translate-x-5 
+                   active:translate-x-3"
+      >
+        <Icon size={22} className="sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
       </div>
 
-      <h3 className="text-xl font-extrabold uppercase tracking-tight mb-3">
+      <h3 className="text-lg sm:text-xl lg:text-2xl font-extrabold uppercase tracking-tight mb-3">
         {title}
       </h3>
-      <p className="text-gray-600">{description}</p>
+      <p className="text-gray-600 text-sm sm:text-base">{description}</p>
     </div>
   );
 };
 
 const Features = () => {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-10 sm:py-12 lg:py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Grid of cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 sm:mb-10">
           {FEATURES.map((item) => (
             <FeatureCard key={item.title} {...item} />
           ))}
@@ -61,10 +66,11 @@ const Features = () => {
         <div className="flex justify-center">
           <button
             type="button"
-            className="bg-[#c99238] shadow-md text-white font-semibold px-8 py-3 rounded-md flex items-center gap-3 hover:bg-[#b18132] transition-colors"
+            className="bg-[#c99238] shadow-md text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-md 
+                       flex items-center gap-2 sm:gap-3 hover:bg-[#b18132] transition-colors text-sm sm:text-base"
           >
             Read More
-            <HiArrowLongRight className="size-5" />
+            <HiArrowLongRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       </div>
@@ -73,4 +79,6 @@ const Features = () => {
 };
 
 export default Features;
+
+
 

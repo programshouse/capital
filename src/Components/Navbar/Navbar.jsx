@@ -1,62 +1,122 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom"; // <-- use NavLink for active state
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import LangToggle from "../Toggle/Toggle";
 
 const Navbar = ({ siteLang }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [pagesOpen, setPagesOpen] = useState(false);
   const [lang, setLang] = useState(siteLang || "EN");
-
-  const pagesRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (pagesRef.current && !pagesRef.current.contains(e.target)) {
-        setPagesOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const [scrolled, setScrolled] = useState(false);
 
   const isRTL = lang === "AR";
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // shared link styles
+  const baseLink =
+    "px-2 py-1 rounded transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-white/50";
+  const hoverLink = "hover:bg-white/10 hover:text-white";
+  const inactiveLink = "text-white/90";
+  const activeLink = "bg-white/20 text-white font-semibold";
+
   return (
-    <div className={`${isRTL ? "direction-rtl" : "direction-ltr"}`}>
-      {/* ================= Top Info Bar (YELLOW) ================= */}
-      <div className="bg-[#ce9233] text-white">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <h2 className="font-bold text-2xl md:text-3xl">CAPITAL</h2>
+    <header className={`${isRTL ? "direction-rtl" : "direction-ltr"}`}>
+      {/* Spacer to prevent layout shift because nav is fixed */}
+      <div className="h-16" />
 
-          {/* Desktop info + Lang toggle */}
-          <div className="hidden md:flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <FaMapMarkerAlt />
-              <span className="text-base">123 Street, New York, USA</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaEnvelope />
-              <span className="text-base">info@example.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaPhoneAlt />
-              <span className="text-base">+012 345 67890</span>
+      {/* Fixed nav (sticky behavior) */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 w-full bg-[#ce9233] transition-shadow ${
+          scrolled ? "shadow-lg" : "shadow-md"
+        }`}
+        role="navigation"
+        aria-label="Main Navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 py-2">
+          <div className="h-16 flex items-center justify-between ">
+            {/* Logo */}
+            <a href="/" className="flex items-center gap-2 shrink-0 ">
+              <img
+                src="assets/logo2.png"
+                alt="Capital Company"
+                className="w-20 h-20"
+              />
+              {/* <span className="font-extrabold tracking-wide text-white">
+                CAPITAL
+              </span> */}
+            </a>
+
+            {/* Links (desktop) */}
+            <div className="hidden md:flex items-center gap-4">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `${baseLink} ${hoverLink} ${
+                    isActive ? activeLink : inactiveLink
+                  }`
+                }
+                end
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `${baseLink} ${hoverLink} ${
+                    isActive ? activeLink : inactiveLink
+                  }`
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/services"
+                className={({ isActive }) =>
+                  `${baseLink} ${hoverLink} ${
+                    isActive ? activeLink : inactiveLink
+                  }`
+                }
+              >
+                Services
+              </NavLink>
+              <NavLink
+                to="/portfolio"
+                className={({ isActive }) =>
+                  `${baseLink} ${hoverLink} ${
+                    isActive ? activeLink : inactiveLink
+                  }`
+                }
+              >
+                Portfolio
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `${baseLink} ${hoverLink} ${
+                    isActive ? activeLink : inactiveLink
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
             </div>
 
-            {/* Language toggle — desktop */}
-            <div className="ml-4">
+            {/* Lang toggle (desktop) */}
+            <div className="hidden md:flex items-center gap-4">
               <LangToggle lang={lang} setLang={setLang} />
             </div>
-          </div>
 
-          {/* Mobile menu toggle ONLY */}
-          <div className="flex items-center gap-3 md:hidden">
+            {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="p-2 rounded bg-white"
-              aria-label="Toggle menu"
+              className="md:hidden p-2 rounded bg-white border border-gray-200"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? (
                 <IoMdClose className="text-2xl text-gray-700" />
@@ -66,94 +126,81 @@ const Navbar = ({ siteLang }) => {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* ================= Main NAV (WHITE) — desktop only ================= */}
-      <nav className="bg-white shadow-md sticky top-0 z-50 hidden md:block">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="h-16 flex items-center justify-between">
-            <div className="flex items-center gap-6">
-              <Link to="/" className="text-gray-700 hover:text-[#ce9233]">Home</Link>
-              <Link to="/about" className="text-gray-700 hover:text-[#ce9233]">About</Link>
-              <Link to="/services" className="text-gray-700 hover:text-[#ce9233]">Services</Link>
-                        <Link to="/portfolio" className="text-gray-700 hover:text-[#ce9233]">portfolio</Link>
-              <Link to="/contact" className="text-gray-700 hover:text-[#ce9233]">Contact</Link>
-
-              {/* Pages dropdown desktop */}
-              <div className="relative" ref={pagesRef}>
-                <button
-                  onClick={() => setPagesOpen((v) => !v)}
-                  className="text-gray-700 hover:text-[#ce9233] flex items-center gap-1"
-                >
-                  <span>Pages</span>
-                  <span className="text-sm">▼</span>
-                </button>
-                {pagesOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
-                    <Link to="/features" className="block px-4 py-2 hover:bg-gray-100">Features</Link>
-                    <Link to="/team" className="block px-4 py-2 hover:bg-gray-100">Our Team</Link>
-                    <Link to="/testimonial" className="block px-4 py-2 hover:bg-gray-100">Testimonial</Link>
-                    <Link to="/appointment" className="block px-4 py-2 hover:bg-gray-100">Appointment</Link>
-                    <Link to="/404" className="block px-4 py-2 hover:bg-gray-100">404 Page</Link>
-                  </div>
-                )}
-              </div>
+        {/* Mobile panel */}
+        {isOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            <div className="px-4 py-2 flex items-center justify-between">
+              <LangToggle lang={lang} setLang={setLang} />
             </div>
-
-            <Link
-              to="/quote"
-              className="px-4 py-2 bg-[#ce9233] text-white rounded hover:bg-yellow-700"
-            >
-              Get A Quote
-            </Link>
+            <div className="py-2">
+              <NavLink
+                to="/"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 hover:bg-gray-100 ${
+                    isActive ? "font-semibold text-[#ce9233]" : "text-gray-800"
+                  }`
+                }
+                end
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/about"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 hover:bg-gray-100 ${
+                    isActive ? "font-semibold text-[#ce9233]" : "text-gray-800"
+                  }`
+                }
+              >
+                About
+              </NavLink>
+              <NavLink
+                to="/services"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 hover:bg-gray-100 ${
+                    isActive ? "font-semibold text-[#ce9233]" : "text-gray-800"
+                  }`
+                }
+              >
+                Services
+              </NavLink>
+              <NavLink
+                to="/portfolio"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 hover:bg-gray-100 ${
+                    isActive ? "font-semibold text-[#ce9233]" : "text-gray-800"
+                  }`
+                }
+              >
+                Portfolio
+              </NavLink>
+              <NavLink
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-4 py-3 hover:bg-gray-100 ${
+                    isActive ? "font-semibold text-[#ce9233]" : "text-gray-800"
+                  }`
+                }
+              >
+                Contact
+              </NavLink>
+            </div>
           </div>
-        </div>
+        )}
       </nav>
-
-      {/* ================= Mobile menu ================= */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <Link to="/" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Home</Link>
-          <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">About</Link>
-          <Link to="/services" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Services</Link>
-          <Link to="/portfolio" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">portfolio</Link>
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="block px-4 py-3 hover:bg-gray-100">Contact</Link>
-
-          <button
-            onClick={() => setPagesOpen((v) => !v)}
-            className="w-full text-left px-4 py-3 hover:bg-gray-100 flex items-center justify-between"
-          >
-            Pages <span className="text-sm">▼</span>
-          </button>
-          {pagesOpen && (
-            <div className="pb-2">
-              <Link to="/features" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Features</Link>
-              <Link to="/team" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Our Team</Link>
-              <Link to="/testimonial" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Testimonial</Link>
-              <Link to="/appointment" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">Appointment</Link>
-              <Link to="/404" onClick={() => setIsOpen(false)} className="block px-8 py-2 hover:bg-gray-100">404 Page</Link>
-            </div>
-          )}
-
-
-          <div className="px-4 py-3 border-t text-[#ce9233] border-gray-200">
-            <LangToggle lang={lang} setLang={setLang} />
-          </div>
-
-          <Link
-            to="/quote"
-            onClick={() => setIsOpen(false)}
-            className="block mx-4 my-3 text-center px-4 py-2 bg-[#ce9233] text-white rounded hover:bg-yellow-700"
-          >
-            Get A Quote
-          </Link>
-        </div>
-      )}
-    </div>
+    </header>
   );
 };
 
 export default Navbar;
+
+
 
 
 

@@ -44,7 +44,6 @@ const sections = {
   ],
 };
 
-// Simple reveal-on-scroll wrapper (no external libs)
 const Reveal = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
   const [show, setShow] = useState(false);
@@ -82,62 +81,75 @@ const AboutPage = ({ lang = "en" }) => {
   return (
     <div dir={lang === "ar" ? "rtl" : "ltr"} className="w-full">
       {/* Hero */}
-      <section
-        className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center"
-        style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
-        <Reveal className="relative z-10 text-center text-white px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-3">
-            {lang === "ar" ? "من نحن" : "About Us"}
-          </h1>
-          <p className="text-base md:text-xl max-w-3xl mx-auto">
-            {lang === "ar"
-              ? "تعرّف أكثر على من نحن ورؤيتنا ومهمتنا."
-              : "Learn more about who we are, our vision, and our mission."}
-          </p>
-        </Reveal>
-      </section>
+<section
+  className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-start"
+  style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}
+>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+  <Reveal className="relative z-10 text-start text-white px-14 max-w-3xl">
+    <h1 className="text-4xl md:text-6xl font-bold mb-3">
+      {lang === "ar" ? "من نحن" : "About Us"}
+    </h1>
+    <p className="text-base md:text-xl">
+      {lang === "ar"
+        ? "تعرّف أكثر على من نحن ورؤيتنا ومهمتنا."
+        : "Learn more about who we are, our vision, and our mission."}
+    </p>
+  </Reveal>
+</section>
+
 
       {/* Sections */}
       {data.map((item, idx) => {
         const Icon = item.icon;
         return (
-          <section
-            key={item.id}
-            className={`${idx % 2 === 0 ? "bg-gray-50" : "bg-white"} py-16`}
-          >
+<section
+  key={item.id}
+  className={`${idx % 2 === 0 ? "bg-gray-50" : "bg-white"} py-16`}
+>
+  <div
+    className={`max-w-6xl mx-auto px-6 flex flex-col ${
+      item.reverse ? "md:flex-row-reverse" : "md:flex-row"
+    } items-center gap-10`}
+  >
+    <Reveal className="flex-1">
+      <div className={`${lang === "ar" ? "text-right" : "text-left"}`}>
+        <div
+          className={`flex items-center gap-3 ${
+            lang === "ar" ? "justify-end" : "justify-start"
+          }`}
+        >
+          <Icon className="text-yellow-500 text-4xl shrink-0" />
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
+              {item.title}
+            </h2>
             <div
-              className={`max-w-6xl mx-auto px-6 flex flex-col ${
-                item.reverse ? "md:flex-row-reverse" : "md:flex-row"
-              } items-center gap-10`}
-            >
-              <Reveal className="flex-1">
-                <div className={`${lang === "ar" ? "text-right" : "text-left"}`}>
-                  <Icon className="text-yellow-500 text-5xl mb-4 mx-auto md:mx-0" />
-                  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
-                    {item.title}
-                  </h2>
-                  <div
-                    className={`h-1 w-16 bg-yellow-500 rounded mb-6 ${
-                      lang === "ar" ? "ml-auto" : ""
-                    }`}
-                  />
-                  <p className="text-gray-600 leading-relaxed">{item.text}</p>
-                </div>
-              </Reveal>
+              className={`h-1 w-20 bg-yellow-500 rounded ${
+                lang === "ar" ? "ml-auto" : ""
+              }`}
+            />
+          </div>
+        </div>
 
-              <Reveal delay={120} className="flex-1">
-                <div className="group overflow-hidden rounded-2xl shadow-xl">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-              </Reveal>
-            </div>
-          </section>
+        {/* النص */}
+        <p className="text-gray-600 leading-relaxed mt-4">{item.text}</p>
+      </div>
+    </Reveal>
+
+    <Reveal delay={120} className="flex-1">
+      <div className="group overflow-hidden rounded-2xl shadow-xl">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+
         );
       })}
     </div>

@@ -45,24 +45,25 @@ const AboutSection = () => {
 
             {/* Features */}
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-  <div className="flex items-center">
-    <div className="group flex-shrink-0 w-16 h-16 bg-yellow-100 hover:bg-yellow-600 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300">
-      <FaUsersCog className="text-yellow-600 w-8 h-8 group-hover:text-yellow-100 transition duration-300" />
+  <div className="group flex items-center cursor-pointer">
+    <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-100 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300 group-hover:bg-yellow-600">
+      <FaUsersCog className="text-yellow-600 w-6 h-6 sm:w-8 sm:h-8 transition duration-300 group-hover:text-yellow-100" />
     </div>
     <h5 className="uppercase font-semibold text-gray-800">
       Certified Expert & Team
     </h5>
   </div>
 
-  <div className="flex items-center">
-    <div className="group flex-shrink-0 w-16 h-16 bg-yellow-100 hover:bg-yellow-600 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300">
-      <FaTachometerAlt className="text-yellow-600 w-8 h-8 group-hover:text-yellow-100 transition duration-300" />
+  <div className="group flex items-center cursor-pointer">
+    <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-100 flex items-center justify-center mr-5 rounded-lg shadow-sm transition duration-300 group-hover:bg-yellow-600">
+      <FaTachometerAlt className="text-yellow-600 w-6 h-6 sm:w-8 sm:h-8 transition duration-300 group-hover:text-yellow-100" />
     </div>
     <h5 className="uppercase font-semibold text-gray-800">
       Fast & Reliable Services
     </h5>
   </div>
 </div>
+
 
 
             {/* List */}
@@ -82,11 +83,12 @@ const AboutSection = () => {
             </ul>
 
             {/* Highlighted Box */}
-            <div className="border-4 border-yellow-600 text-lg md:text-xl font-bold p-6 text-center rounded-md shadow-md">
-              <h4 className="uppercase font-semibold text-black">
-                We’re Good in All Metal Works Using Quality Welding Tools
-              </h4>
-            </div>
+<div className="border-4 border-yellow-600 text-base sm:text-lg md:text-xl font-bold p-4 sm:p-6 text-center rounded-md shadow-md">
+  <h4 className="uppercase font-semibold text-black">
+    We’re Good in All Metal Works Using Quality Welding Tools
+  </h4>
+</div>
+
           </div>
         </div>
       </div>

@@ -34,17 +34,18 @@ const CarouselWithThumbnails = () => {
 
       {/* Text and Button */}
       <div
-        className="absolute left-6 sm:left-12  md:left-32 top-1/2 -translate-y-1/2 
-                   p-3 sm:p-4 md:p-6 pl-6 sm:pl-12 md:pl-20 rounded-md text-white 
-                   w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%]"
+        className="absolute left-4 sm:left-8 md:left-32 top-1/2 -translate-y-1/2 
+                   p-2 sm:p-4 md:p-6 rounded-md text-white 
+                   w-[92%] sm:w-[80%] md:w-[70%] lg:w-[60%]"
       >
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase mb-4 sm:mb-6 leading-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold uppercase mb-3 sm:mb-6 leading-snug sm:leading-tight">
           {slides[currentIndex].title}
-        </h1>
+        </h2>
         <a
           href="#"
-          className="bg-[#ce9233] hover:bg-[#bd9049] px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 
-                     rounded-md text-sm sm:text-base md:text-lg font-semibold inline-block"
+          className="bg-[#ce9233] hover:bg-[#bd9049] 
+                     px-3 sm:px-6 md:px-8 py-1.5 sm:py-3 md:py-4 
+                     rounded-md text-base sm:text-base md:text-lg font-semibold inline-block"
         >
           Explore More
         </a>
@@ -73,6 +74,7 @@ const CarouselWithThumbnails = () => {
 };
 
 export default CarouselWithThumbnails;
+
 
 
 

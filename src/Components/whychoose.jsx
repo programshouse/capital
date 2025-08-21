@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 function useOnScreen(ref, rootMargin = "0px") {
@@ -7,15 +9,12 @@ function useOnScreen(ref, rootMargin = "0px") {
     if (!ref.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIntersecting(true);
-          observer.disconnect();
-        }
+        setIntersecting(entry.isIntersecting);
       },
       { root: null, rootMargin, threshold: 0.2 }
     );
     observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => observer.disconnect()
   }, [ref, rootMargin]);
 
   return isIntersecting;
@@ -26,22 +25,29 @@ function useCountUp(targetValue, durationMs, start) {
   const startTimeRef = useRef(null);
 
   useEffect(() => {
-    if (!start) return;
-
     let animationFrameId = 0;
 
-    const step = (timestamp) => {
-      if (startTimeRef.current === null) startTimeRef.current = timestamp;
-      const elapsed = timestamp - startTimeRef.current;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-      setCurrentValue(Math.floor(eased * targetValue));
-      if (progress < 1) {
-        animationFrameId = requestAnimationFrame(step);
-      }
-    };
+    if (start) {
+      setCurrentValue(0);
+      startTimeRef.current = null;
 
-    animationFrameId = requestAnimationFrame(step);
+      const step = (timestamp) => {
+        if (startTimeRef.current === null) startTimeRef.current = timestamp;
+        const elapsed = timestamp - startTimeRef.current;
+        const progress = Math.min(elapsed / durationMs, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCurrentValue(Math.floor(eased * targetValue));
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(step);
+        }
+      };
+
+      animationFrameId = requestAnimationFrame(step);
+    } else {
+      setCurrentValue(0); // reset when leaving
+      startTimeRef.current = null;
+    }
+
     return () => cancelAnimationFrame(animationFrameId);
   }, [start, targetValue, durationMs]);
 
@@ -52,8 +58,8 @@ export default function WhyChoose() {
   const sectionRef = useRef(null);
   const inView = useOnScreen(sectionRef, "-100px");
 
-  const clients = useCountUp(9999, 1800, inView);
-  const projects = useCountUp(9999, 1800, inView);
+  const clients = useCountUp(9999, 1500, inView);
+  const projects = useCountUp(9999, 1500, inView);
 
   return (
     <section
@@ -67,7 +73,7 @@ export default function WhyChoose() {
       <div className="relative mx-auto w-[95%] max-w-7xl flex flex-col md:flex-row">
         {/* Right side text & stats */}
         <div className="w-full md:w-3/5 flex flex-col gap-6 text-right bg-black/70 p-6 rounded shadow-lg md:ml-auto">
-          <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-white">
+          <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-white text-start ">
             WHY YOU SHOULD CHOOSE OUR WELDING SERVICES
           </h2>
           <p className="mt-5 max-w-full md:max-w-xl text-neutral-300">
@@ -119,7 +125,4 @@ function Progress({ label, value, active }) {
     </div>
   );
 }
-
-
-
 
