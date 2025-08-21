@@ -22,24 +22,26 @@ export default function Portfolio() {
   return (
     <section>
       {/* Header */}
+      <div className=" bg-white">
+      <div className="bg-white">
       <div
-        className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center text-center text-white"
+        className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center text-center  text-white"
         style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}
       >
         {/* Dark Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
 
         {/* Content */}
-        <div className="relative z-10 px-4">
+        <div className="relative z-10 px-4  ">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h2>
           <p className="text-lg max-w-2xl mx-auto">
             Explore our latest projects across different services.
           </p>
         </div>
       </div>
-
-      {/* Filter */}
-      <div className="flex justify-center gap-4 mt-10 flex-wrap">
+      </div>
+<div className="bg-white ">
+      <div className="flex justify-center gap-4 mt-10 flex-wrap bg-white">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -56,7 +58,7 @@ export default function Portfolio() {
       </div>
 
       {/* Portfolio Grid */}
-      <div className="container mx-auto px-4 py-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto px-4 py-12 grid bg-white gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
@@ -83,6 +85,8 @@ export default function Portfolio() {
           </div>
         ))}
       </div>
+      </div>
+</div>
     </section>
   );
 }

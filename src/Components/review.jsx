@@ -65,7 +65,8 @@ const ReviewSlider = () => {
   };
 
   return (
- <div className="relative w-full max-w-7xl mx-auto py-4 md:py-16 mb-6 md:mb-28 px-4 md:px-8">
+      
+ <div className="relative w-full max-w-7xl bg-white mx-auto py-4 md:py-16 mb-6 md:mb-28 px-4 md:px-8">
 
       {/* Slider Container */}
       <div className="flex items-center justify-center relative">
@@ -118,14 +119,11 @@ const ReviewSlider = () => {
                 alt={review.name}
                 className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-gray-200"
               />
-
-              {/* Name & Title */}
               <h3 className="text-2xl font-semibold text-gray-900">
                 {review.name}
               </h3>
               <p className="text-base text-gray-500 mb-2">{review.title}</p>
 
-              {/* Rating */}
               <div className="flex justify-center mb-4">
                 {[...Array(5)].map((_, i) => (
                   <FaStar
@@ -136,8 +134,6 @@ const ReviewSlider = () => {
                   />
                 ))}
               </div>
-
-              {/* Description */}
               <p className="text-gray-700 italic text-lg">
                 {review.description}
               </p>

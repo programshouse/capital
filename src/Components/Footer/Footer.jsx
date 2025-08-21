@@ -12,21 +12,21 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-900 text-gray-200 py-12">
+    <footer className="w-full bg-gray-900 text-gray-200 py-12 ">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Our Office */}
           <div>
             <h5 className="uppercase text-white mb-4 font-semibold">Our Office</h5>
-            <p className="mb-2 flex items-center gap-2">
+            <p className="mb-2 flex items-center gap-2 text-white hover:text-yellow-600">
               <FaMapMarkerAlt className="text-blue-500" />
               123 Street, New York, USA
             </p>
-            <p className="mb-2 flex items-center gap-2">
+            <p className="mb-2 flex items-center gap-2 text-white hover:text-yellow-600">
               <FaPhoneAlt className="text-blue-500" />
               +012 345 67890
             </p>
-            <p className="mb-2 flex items-center gap-2">
+            <p className="mb-2 flex items-center gap-2 text-white hover:text-yellow-600">
               <FaEnvelope className="text-blue-500" />
               info@example.com
             </p>
@@ -49,21 +49,21 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h5 className="uppercase text-white mb-4 font-semibold">Quick Links</h5>
-            <ul className="space-y-2">
+            <ul className="space-y-2 ">
               <li>
-                <a href="#" className="hover:text-white">About Us</a>
+                <a href="#" className="text-white hover:text-yellow-600">About Us</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white">Contact Us</a>
+                <a href="#" className="text-white hover:text-yellow-600">Contact Us</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white">Our Services</a>
+                <a href="#" className="text-white hover:text-yellow-600">Our Services</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white">Terms & Conditions</a>
+                <a href="#" className="text-white hover:text-yellow-600">Terms & Conditions</a>
               </li>
               <li>
-                <a href="#" className="hover:text-white">Support</a>
+                <a href="#" className="text-white hover:text-yellow-600">Support</a>
               </li>
             </ul>
           </div>
@@ -83,7 +83,6 @@ const Footer = () => {
           <div>
             <h5 className="uppercase text-white mb-4 font-semibold">Gallery</h5>
             <div className="grid grid-cols-3 gap-1">
-              <img className="w-full h-full object-cover" src="assets/service-1.jpg" alt="Service 1" />
               <img className="w-full h-full object-cover" src="assets/service-2.jpg" alt="Service 2" />
               <img className="w-full h-full object-cover" src="assets/service-3.jpg" alt="Service 3" />
               <img className="w-full h-full object-cover" src="assets/service-4.jpg" alt="Service 4" />

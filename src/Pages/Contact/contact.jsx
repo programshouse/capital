@@ -21,12 +21,11 @@ export default function Contact() {
       </section>
 
       {/* Contact Info + Form */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {/* Left: Info */}
+<div className="bg-white">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 bg-white">
         <div className="bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 shadow-xl rounded-2xl p-6 sm:p-8 text-white">
           <h2 className="text-xl sm:text-2xl font-bold mb-6">Get in Touch</h2>
           <div className="space-y-5 sm:space-y-6">
-            {/* Phone */}
             <div className="flex items-start gap-4">
               <div className=" bg-white p-3 rounded-full shrink-0">
                 <FaPhoneAlt className="text-yellow-700 sm:text-xl" />
@@ -36,7 +35,6 @@ export default function Contact() {
                 <p className="text-gray-100 text-sm sm:text-base">+1 234 567 890</p>
               </div>
             </div>
-            {/* Email */}
             <div className="flex items-start gap-4">
               <div className="p-3  bg-white rounded-full shrink-0">
                 <FaEnvelope className="text-yellow-700  sm:text-xl" />
@@ -70,7 +68,7 @@ export default function Contact() {
         </div>
 
         {/* Right: Form */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8">
+        <div className="bg-white text-black shadow-lg rounded-2xl p-6 sm:p-8">
           <h2 className="text-xl sm:text-2xl font-bold mb-6">Send Us a Message</h2>
           <form className="space-y-4 sm:space-y-5">
             <div>
@@ -103,7 +101,7 @@ export default function Contact() {
           </form>
         </div>
       </section>
-
+</div>
       {/* Map + Office Info */}
       <section
         className="relative w-full bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"

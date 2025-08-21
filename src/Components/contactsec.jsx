@@ -42,15 +42,12 @@ const ContactSection = () => {
   </div>
 </div>
 
-
-
-          {/* Right Form */}
 <div className="w-full md:w-1/2 bg-white rounded-lg p-6 md:p-10 shadow-lg">
-  <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
-  <form className="flex flex-col gap-4">
+  <h3 className="text-2xl text-black  font-semibold mb-6">Contact Us</h3>
+  <form className="flex flex-col gap-4 text-black">
     <input
       type="text"
-      placeholder="Your Name"
+      placeholder="Your Name "
       className="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
     />
     <input

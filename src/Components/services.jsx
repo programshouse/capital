@@ -58,7 +58,7 @@ const Services = () => {
 
       <div className="container mx-auto px-4 py-10 ">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight">
+          <h2 className="text-3xl md:text-4xl text-gray-900 lg:text-5xl font-extrabold uppercase leading-tight">
             Reliable & High-Quality
             <br />
             <span className="text-gray-900">Welding Services</span>

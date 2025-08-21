@@ -3,12 +3,10 @@ import { FaUsersCog, FaTachometerAlt, FaCheckSquare } from "react-icons/fa";
 
 const AboutSection = () => {
   return (
-    <div className="py-16 bg-white">
+    <div className="py-16 bg-white text-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-16">
-          {/* Image with frame */}
 <div className="lg:w-1/2 relative flex items-center justify-center lg:pr-8">
-  {/* Border frame */}
   <div
     className="
       absolute -top-3 -left-3 w-[90%] h-[90%] border-2 md:border-4 border-yellow-600

@@ -115,7 +115,7 @@ const AboutPage = ({ lang = "en" }) => {
               <Reveal className="flex-1">
                 <div className={`${lang === "ar" ? "text-right" : "text-left"}`}>
                   <Icon className="text-yellow-500 text-5xl mb-4 mx-auto md:mx-0" />
-                  <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
                     {item.title}
                   </h2>
                   <div
