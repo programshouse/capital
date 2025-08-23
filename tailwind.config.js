@@ -6,7 +6,21 @@ export default {
   ],
   darkMode: 'class', // Enables dark mode with a class
   theme: {
-    extend: {},
+  theme: {
+    extend: {
+      colors: {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        accent: "var(--color-accent)",
+        success: "var(--color-success)",
+        danger: "var(--color-danger)",
+        warning: "var(--color-warning)",
+        info: "var(--color-info)",
+        background: "var(--color-background)",
+        text: "var(--color-text)",
+      },
+    },
+  },
   },
   plugins: [],
 };

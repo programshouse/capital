@@ -44,7 +44,7 @@ export default function Portfolio() {
         </div>
 
         <div className="bg-white ">
-          <div className="flex justify-center gap-4 mt-10 flex-wrap bg-white">
+          <div className="flex justify-center gap-1 mt-10 flex-wrap bg-white">
             {categories.map((cat) => (
               <button
                 key={cat}
