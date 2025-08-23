@@ -31,8 +31,6 @@ const CarouselWithThumbnails = () => {
 
       {/* Black overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* Text and Button */}
       <div
         className="absolute left-4 sm:left-8 md:left-32 top-1/2 -translate-y-1/2 
                    p-2 sm:p-4 md:p-6 rounded-md text-white 

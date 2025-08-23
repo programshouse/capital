@@ -87,9 +87,9 @@ const AboutPage = ({ lang = "en" }) => {
 >
   <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
   <Reveal className="relative z-10 text-start text-white px-14 max-w-3xl">
-    <h1 className="text-4xl md:text-6xl font-bold mb-3">
+    <h2 className="text-4xl md:text-5xl font-bold mb-4">
       {lang === "ar" ? "من نحن" : "About Us"}
-    </h1>
+    </h2>
     <p className="text-base md:text-xl">
       {lang === "ar"
         ? "تعرّف أكثر على من نحن ورؤيتنا ومهمتنا."
