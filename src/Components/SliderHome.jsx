@@ -55,7 +55,7 @@ const CarouselWithThumbnails = () => {
           <div
             key={slide.id}
             className={`hidden sm:block w-16 h-12 md:w-24 md:h-16 cursor-pointer border-2 rounded-md overflow-hidden ${
-              currentIndex === index ? "border-blue-500" : "border-transparent"
+              currentIndex === index ? "border-yellow-500" : "border-transparent"
             }`}
             onClick={() => setCurrentIndex(index)}
           >
