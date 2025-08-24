@@ -40,17 +40,17 @@ button:focus-visible {
 } */
 
 :root {
-  --color-primary: #ce9233;
-  --color-secondary: text-yellow-600;
-  --color-accent: #f59e0b;
-  --color-success: #22c55e;
-  --color-danger: #ef4444;
-  --color-warning: #eab308;
-  --color-info: #06b6d4;
-
-  --color-text: #213547;
-  --color-background: #ffffff;
+  --color-primary: #ce9233;       /* Golden bronze, main brand color */
+  --color-secondary: #ca8a04;     /* Tailwind yellow-600 equivalent */
+  --color-accent: #f59e0b;        /* Amber accent */
+  --color-success: #22c55e;       /* Green success */
+  --color-danger: #ef4444;        /* Red danger */
+  --color-warning: #eab308;       /* Yellow warning */
+  --color-info: #06b6d4;          /* Cyan info */
+  --color-text: #213547;          /* Deep slate text */
+  --color-background: #ffffff;    /* White background */
 }
+
 
 html, body, #root {
   height: 100%;
