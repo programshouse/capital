@@ -1,0 +1,5 @@
+{
+  "welcome": "Welcome to our site",
+  "cta": "Get Started",
+  "greeting": "Hello, {{name}}!"
+}
