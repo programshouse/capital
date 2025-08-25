@@ -1,5 +1,20 @@
 {
-  "welcome": "Welcome to our site",
-  "cta": "Get Started",
-  "greeting": "Hello, {{name}}!"
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "We'd love to hear from you! Reach out to us anytime and we'll happily answer your questions."
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Us",
+      "subtitle": "Learn more about who we are, our vision, and our mission."
+    }
+  },
+  "portfolio": {
+    "hero": {
+      "title": "Our Portfolio",
+      "subtitle": "Explore our latest projects across different services."
+    }
+  }
 }

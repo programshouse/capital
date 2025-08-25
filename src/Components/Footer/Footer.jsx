@@ -12,8 +12,9 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-900 text-gray-200 py-12 ">
+    <footer className="w-full bg-gray-900 text-gray-200 py-12">
       <div className="max-w-7xl mx-auto px-4">
+        {/* Top: columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Our Office */}
           <div>
@@ -31,16 +32,16 @@ const Footer = () => {
               info@example.com
             </p>
             <div className="flex pt-3 space-x-2">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded" aria-label="Twitter">
                 <FaTwitter />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded" aria-label="Facebook">
                 <FaFacebookF />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded">
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded" aria-label="YouTube">
                 <FaYoutube />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-white text-yellow-600 p-2 rounded" aria-label="LinkedIn">
                 <FaLinkedinIn />
               </a>
             </div>
@@ -49,22 +50,12 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h5 className="uppercase text-white mb-4 font-semibold">Quick Links</h5>
-            <ul className="space-y-2 ">
-              <li>
-                <a href="/about" className="text-white hover:text-yellow-600">About Us</a>
-              </li>
-              <li>
-                <a href="/contact" className="text-white hover:text-yellow-600">Contact Us</a>
-              </li>
-              <li>
-                <a href="/services" className="text-white hover:text-yellow-600">Our Services</a>
-              </li>
-              <li>
-                <a href="/terms" className="text-white hover:text-yellow-600">Terms & Conditions</a>
-              </li>
-              <li>
-                <a href="/support" className="text-white hover:text-yellow-600">Support</a>
-              </li>
+            <ul className="space-y-2">
+              <li><a href="/about" className="text-white hover:text-yellow-600">About Us</a></li>
+              <li><a href="/contact" className="text-white hover:text-yellow-600">Contact Us</a></li>
+              <li><a href="/services" className="text-white hover:text-yellow-600">Our Services</a></li>
+              <li><a href="/terms" className="text-white hover:text-yellow-600">Terms &amp; Conditions</a></li>
+              <li><a href="/support" className="text-white hover:text-yellow-600">Support</a></li>
             </ul>
           </div>
 
@@ -101,11 +92,18 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+<div className="mt-10 border-t border-gray-800/80 pt-6">
+  <p className="text-sm text-gray-400  text-center">
+    <p>© {new Date().getFullYear()} ProgramsHouse. All Rights Reserved.</p>
+  </p>
+</div>
       </div>
     </footer>
   );
 };
 
 export default Footer;
+
 
 

@@ -1,7 +1,7 @@
 
 
 import React, { useState } from "react";
-
+import { useTranslation } from "react-i18next";
 const categories = ["All", "Metal Works", "Custom Welding", "Pipe Welding", "Product"];
 
 const projects = [
@@ -15,6 +15,8 @@ const projects = [
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [hovered, setHovered] = useState(null);
+  const {t} = useTranslation();
+
 
   const filteredProjects =
     activeCategory === "All"
@@ -25,23 +27,18 @@ export default function Portfolio() {
     <section>
       {/* Header */}
       <div className=" bg-white">
-        <div className="bg-white">
-          <div
-            className="relative w-full h-[60vh] bg-cover bg-center bg-fixed flex items-center justify-center text-center  text-white"
-            style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}
-          >
-            {/* Dark Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
-
-            {/* Content */}
-            <div className="relative z-10 px-4  ">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h2>
-              <p className="text-lg max-w-2xl mx-auto">
-                Explore our latest projects across different services.
-              </p>
-            </div>
-          </div>
+      <section
+        className="relative w-full h-[40vh] md:h-[60vh] bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed flex items-center justify-start"
+        style={{ backgroundImage: "url('/assets/carousel-1.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
+        <div className="relative z-10 text-white px-16 text-start max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">    {t("portfolio.hero.title")}</h2>
+          <p className="mt-3 text-base md:text-xl max-w-2xl">
+           {t("portfolio.hero.subtitle")}
+          </p>
         </div>
+      </section>
 
         <div className="bg-white ">
           <div className="flex justify-center gap-1 mt-10 flex-wrap bg-white">

@@ -2,9 +2,11 @@ import React from "react";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { MdAccessTime } from "react-icons/md";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 
 export default function Contact() {
+  const { t} = useTranslation();
   return (
     <div className="w-full">
       {/* Hero */}
@@ -14,10 +16,9 @@ export default function Contact() {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"></div>
         <div className="relative z-10 text-white px-16 text-start max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("contact.hero.title")}</h2>
           <p className="mt-3 text-base md:text-xl max-w-2xl">
-            We&apos;d love to hear from you! Reach out to us anytime and we&apos;ll happily
-            answer your questions.
+        {t("contact.hero.subtitle")}
           </p>
         </div>
       </section>
